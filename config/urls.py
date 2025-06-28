@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+
 from .settings import MEDIA_URL, MEDIA_ROOT
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
@@ -7,8 +9,10 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("api/v1/auth/", include("authenticate.urls")),
-    path("api/v1/app", include("app.urls"))
+    path("", include("authenticate.urls")),
+    path("", include("app.urls")),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 ] +  static(MEDIA_URL, document_root=MEDIA_ROOT)
 
 
