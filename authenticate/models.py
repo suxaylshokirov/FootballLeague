@@ -1,5 +1,4 @@
 from django.contrib.auth.models import AbstractUser, UserManager
-from django.db import models
 from django.db.models import TextChoices, ForeignKey, CASCADE
 from django.db.models.fields import CharField
 
