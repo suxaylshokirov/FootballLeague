@@ -13,8 +13,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
-# Application definition
+AUTH_USER_MODEL = 'authenticate.User'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -25,6 +24,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'authenticate',
+    'rest_framework',
+    'drf_spectacular',
+    'channels',
+    'channels_redis'
 ]
 
 MIDDLEWARE = [
@@ -153,4 +156,12 @@ SIMPLE_JWT = {
     "ALGORITHM": "HS256",
     "SIGNING_KEY": SECRET_KEY,
     "AUTH_HEADER_TYPES": ("Bearer",),
+}
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
 }
