@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
-from .settings import MEDIA_URL, MEDIA_ROOT
 from django.conf.urls.static import static
+
+from config.settings import MEDIA_URL, MEDIA_ROOT
 
 urlpatterns = [
     path('admin/', admin.site.urls),
