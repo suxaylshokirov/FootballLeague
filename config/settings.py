@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'authenticate',
     'rest_framework',
     'drf_spectacular',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -155,4 +156,15 @@ SIMPLE_JWT = {
     "ALGORITHM": "HS256",
     "SIGNING_KEY": SECRET_KEY,
     "AUTH_HEADER_TYPES": ("Bearer",),
+}
+
+ASGI_APPLICATION = 'config.asgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
 }
