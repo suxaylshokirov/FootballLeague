@@ -132,8 +132,8 @@ REST_FRAMEWORK = {
 
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'News Platform API',
-    'DESCRIPTION': 'News Platform description',
+    'TITLE': 'Football League Platform API',
+    'DESCRIPTION': 'Football League Platform description',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
     'COMPONENT_SPLIT_REQUEST': True,
