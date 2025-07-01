@@ -23,6 +23,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'drf_spectacular',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -141,7 +144,6 @@ SPECTACULAR_SETTINGS = {
         "persistAuthorization": True
     }
 }
-
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),   # Default: 5 minutes
