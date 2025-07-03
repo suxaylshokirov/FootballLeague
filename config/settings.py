@@ -23,11 +23,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app',
-    'authenticate',
     'rest_framework',
     'drf_spectacular',
-    'channels',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -147,7 +145,6 @@ SPECTACULAR_SETTINGS = {
     }
 }
 
-
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),   # Default: 5 minutes
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),      # Default: 1 day
@@ -156,15 +153,4 @@ SIMPLE_JWT = {
     "ALGORITHM": "HS256",
     "SIGNING_KEY": SECRET_KEY,
     "AUTH_HEADER_TYPES": ("Bearer",),
-}
-
-ASGI_APPLICATION = 'config.asgi.application'
-
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
-        },
-    },
 }

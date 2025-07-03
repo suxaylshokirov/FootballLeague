@@ -1,14 +1,18 @@
-from rest_framework.generics import ListAPIView, CreateAPIView
-from django.shortcuts import render
-from app.models import Player
-from app.serializers import PlayerLeagueTableModelSerializer
+# app/views.py
+from drf_spectacular.utils import extend_schema
+from rest_framework import viewsets, permissions
+from app.models import Match
+from app.serializers import MatchSerializer
 
+@extend_schema(tags=['Referee'])
+class RefereeMatchViewSet(viewsets.ModelViewSet):
+    serializer_class = MatchSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
-class PlayerLeagueTableListApiView(ListAPIView):
-    queryset = Player.objects.all()
-    serializer_class = PlayerLeagueTableModelSerializer
+    def get_queryset(self):
+        referee_id = self.kwargs.get('referee_id')
+        return Match.objects.filter(referee__id=referee_id)
 
-
-class PlayerCreateApiView(CreateAPIView):
-    queryset = Player.objects.all()
-    serializer_class = PlayerLeagueTableModelSerializer
+    def perform_create(self, serializer):
+        referee_id = self.kwargs.get('referee_id')
+        serializer.save(referee_id=referee_id)

@@ -1,8 +1,14 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import RefereeMatchViewSet
 
-from app.views import PlayerLeagueTableListApiView, PlayerCreateApiView
+router = DefaultRouter()
+router.register(
+    r'referee/(?P<referee_id>\d+)/matches',
+    RefereeMatchViewSet,
+    basename='referee-matches'
+)
 
 urlpatterns = [
-    path('player/league/table', PlayerLeagueTableListApiView.as_view()),
-    path('player/create/', PlayerCreateApiView.as_view())
+    path('', include(router.urls)),
 ]
