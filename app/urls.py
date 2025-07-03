@@ -1,16 +1,8 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from django.urls import path
 
-from app.views import TeamViewSet, MatchesViewSet
-
-router = DefaultRouter()
-router.register('team', TeamViewSet)
-
-matches_router = DefaultRouter()
-matches_router.register(r'', MatchesViewSet, basename='matches')
+from app.views import PlayerLeagueTableListApiView, PlayerCreateApiView
 
 urlpatterns = [
-    path('matches/', include(matches_router.urls)),
+    path('player/league/table', PlayerLeagueTableListApiView.as_view()),
+    path('player/create/', PlayerCreateApiView.as_view())
 ]
-
-urlpatterns += router.urls

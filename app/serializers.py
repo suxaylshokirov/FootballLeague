@@ -1,15 +1,9 @@
 from rest_framework.serializers import ModelSerializer
 
-from app.models import Team, Match
+from app.models import Player
 
 
-class TeamModelSerializer(ModelSerializer):
+class PlayerLeagueTableModelSerializer(ModelSerializer):
     class Meta:
-        model = Team
-        fields = "__all__"
-
-
-class MatchSerializer(ModelSerializer):
-    class Meta:
-        model = Match
+        model = Player
         fields = "__all__"

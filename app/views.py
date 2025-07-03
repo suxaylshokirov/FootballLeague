@@ -1,13 +1,14 @@
-from rest_framework.viewsets import ModelViewSet
-from app.models import Team, Match
-from app.serializers import TeamModelSerializer, MatchSerializer
+from rest_framework.generics import ListAPIView, CreateAPIView
+from django.shortcuts import render
+from app.models import Player
+from app.serializers import PlayerLeagueTableModelSerializer
 
 
-class TeamViewSet(ModelViewSet):
-    queryset = Team.objects.all()
-    serializer_class = TeamModelSerializer
+class PlayerLeagueTableListApiView(ListAPIView):
+    queryset = Player.objects.all()
+    serializer_class = PlayerLeagueTableModelSerializer
 
 
-class MatchesViewSet(ModelViewSet):
-    queryset = Match.objects.all()
-    serializer_class = MatchSerializer
+class PlayerCreateApiView(CreateAPIView):
+    queryset = Player.objects.all()
+    serializer_class = PlayerLeagueTableModelSerializer

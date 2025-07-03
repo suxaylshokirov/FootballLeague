@@ -13,6 +13,5 @@ run:
 superuser:
 	python3 manage.py createsuperuser
 
-
 ws:
 	daphne -b 0.0.0.0 -p 8001 config.asgi:application
